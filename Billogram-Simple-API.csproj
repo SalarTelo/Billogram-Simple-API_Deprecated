@@ -2,7 +2,11 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <RootNamespace>Billogram_Simple_API</RootNamespace>
+    <RootNamespace>Billogram</RootNamespace>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove=".gitignore" />
+  </ItemGroup>
 
 </Project>

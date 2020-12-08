@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
-
+using System.Threading.Tasks;
+using Newtonsoft.Json;
 namespace Billogram
 {
     class BillogramClient 
@@ -42,6 +43,28 @@ namespace Billogram
             byte[] byteArray = Encoding.ASCII.GetBytes(m_APIUser + ":" + m_APIKey);
             m_client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(byteArray));
             m_client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+        }
+
+        public async Task<bool> TestConnection()
+        {
+            var url = m_baseURL + "customer" + "?page=" + 1 + "&page_size=" + 1;
+            try
+            {
+                var response = await m_client.GetAsync(url);
+                response.EnsureSuccessStatusCode();
+
+                string responseBody = await response.Content.ReadAsStringAsync();
+                var temp = JsonConvert.DeserializeAnonymousType(responseBody, new { status = "" });
+                return temp.status == "OK";
+            }
+            catch(Exception e)
+            {
+                return false;
+            }
+        }
+
+        public struct Customer
+        {
         }
     }
 }
