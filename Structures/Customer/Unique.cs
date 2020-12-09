@@ -1,20 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Billogram.Structures
+﻿namespace Billogram.Structures.Invoice
 {
-    public class Invoice
-    {
-        public string status { get; set; }
-        public Meta meta { get; set; }
-        public Data[] data { get; set; }
 
-        public class Meta
-        {
-            public int total_count { get; set; }
-            public string total_remaining_sum { get; set; }
-        }
+    public class Unique
+    {
+        public Data data { get; set; }
         public class Data
         {
             public string id { get; set; }
@@ -214,7 +203,6 @@ namespace Billogram.Structures
                 public string command { get; set; }
                 public string method { get; set; }
             }
-
             public class ItemData
             {
                 public string item_no { get; set; }
@@ -267,103 +255,6 @@ namespace Billogram.Structures
                 }
             }
         }
-        public class PDF
-        {
-            public string status { get; set; }
-            public Data data { get; set; }
-            public class Data
-            {
-                public string content { get; set; }
-                public string file_type { get; set; }
-            }
-        }
-    }
-    public class Customer
-    {
-        public string status { get; set; }
-        public Data[] data { get; set; }
-        public Meta meta { get; set; }
-
-        public class Data
-        {
-            public uint customer_no { get; set; }
-            public string name { get; set; }
-            public string notes { get; set; }
-            public string org_no { get; set; }
-            public string vat_no { get; set; }
-            public string language { get; set; }
-            public Contact contact { get; set; }
-            public Address address { get; set; }
-            public DeliveryAdress delivery_address { get; set; }
-            public PaymentSettings payment_settings { get; set; }
-            public string created_at { get; set; }
-            public string updated_at { get; set; }
-            public string company_type { get; set; }
-
-
-            public class Contact
-            {
-                public string name { get; set; }
-                public string email { get; set; }
-                public string phone { get; set; }
-            }
-            public class Address
-            {
-                public string careof { get; set; }
-                public bool use_careof_as_attention { get; set; }
-                public string street_address { get; set; }
-                public string zipcode { get; set; }
-                public string city { get; set; }
-                public string country { get; set; }
-            }
-            public class DeliveryAdress
-            {
-                public string name { get; set; }
-                public string street_address { get; set; }
-                public string careof { get; set; }
-                public string zipcode { get; set; }
-                public string city { get; set; }
-                public string country { get; set; }
-            }
-            public class PaymentSettings
-            {
-                public string recurring_payment_type { get; set; }
-            }
-        }
-        public class Meta
-        {
-            public string total_count { get; set; }
-        }
-    }
-    public class Item
-    {
-        public string status { get; set; }
-        public Meta meta { get; set; }
-        public Data[] data { get; set; }
-
-        public class Meta
-        {
-            public int total_count { get; set; }
-        }
-        public class Data
-        {
-            public string item_no { get; set; }
-            public string title { get; set; }
-            public string description { get; set; }
-            public string price { get; set; }
-            public double vat { get; set; }
-            public string unit { get; set; }
-            public BookKeeping bookkeeping { get; set; }
-            public string created_at { get; set; }
-            public string updated_at { get; set; }
-
-            public class BookKeeping
-            {
-                public string income_account { get; set; }
-                public string vat_account { get; set; }
-            }
-        }
-
     }
 
 }

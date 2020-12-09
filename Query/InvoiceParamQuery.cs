@@ -1,6 +1,6 @@
 ﻿namespace Billogram.Query
 {
-    public class InvoiceParamQuery : QueryParameter
+    public sealed class InvoiceParamQuery : QueryParameter
     {
         public SearchField Search_Field { get; set; }
         public OrderField Order_Field { get; set; }

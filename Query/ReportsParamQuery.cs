@@ -1,8 +1,7 @@
 ﻿namespace Billogram.Query
 {
-    public sealed class ItemParamQuery : QueryParameter
+    public sealed class ReportsParamQuery : QueryParameter
     {
-
         public SearchField Search_Field { get; set; }
         public OrderField Order_Field { get; set; }
 
@@ -28,54 +27,24 @@
             }
             switch (Search_Field)
             {
-                case SearchField.Item_No:
-                    temp += "&filter_field=item_no";
-                    break;
-                case SearchField.Title:
-                    temp += "&filter_field=title";
-                    break;
-                case SearchField.Description:
-                    temp += "&filter_field=description";
-                    break;
-                case SearchField.Price:
-                    temp += "&filter_field=price";
-                    break;
-                case SearchField.Book_Keeping_IncomeAccount:
-                    temp += "&filter_field=bookkeeping:income_account";
-                    break;
-                case SearchField.Book_Keeping_VatAccount:
-                    temp += "&filter_field=bookkeeping:vat_account";
+                case SearchField.Filename:
+                    temp += "&filter_field=filename"; 
                     break;
             }
             return temp;
         }
         private string OrderParam()
         {
-
             string temp = "";
             switch (Order_Field)
             {
                 case OrderField.None:
                     return temp;
-
-                case OrderField.Item_No:
-                    temp += "&order_field=item_no";
+                case OrderField.Filename:
+                    temp += "&order_field=filename";
                     break;
-
-                case OrderField.Title:
-                    temp += "&order_field=title";
-                    break;
-
-                case OrderField.Price:
-                    temp += "&order_field=price";
-                    break;
-
                 case OrderField.Created_At:
                     temp += "&order_field=created_at";
-                    break;
-
-                case OrderField.Update_At:
-                    temp += "&order_field=updated_at";
                     break;
             }
             return temp + GetOrderDirection;
@@ -84,24 +53,15 @@
         {
             return base.GetParam() + FilterParam() + OrderParam();
         }
-
         public enum SearchField
         {
-            Item_No,
-            Title,
-            Description,
-            Price,
-            Book_Keeping_IncomeAccount,
-            Book_Keeping_VatAccount
+            Filename
         }
         public enum OrderField
         {
             None,
-            Item_No,
-            Title,
-            Price,
-            Created_At,
-            Update_At
+            Filename,
+            Created_At
         }
     }
 }

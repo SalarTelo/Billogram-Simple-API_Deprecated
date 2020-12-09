@@ -57,7 +57,7 @@ namespace Billogram
                 var temp = JsonConvert.DeserializeAnonymousType(responseBody, new { status = "" });
                 return temp.status == "OK";
             }
-            catch(Exception e)
+            catch
             {
                 return false;
             }
@@ -66,5 +66,25 @@ namespace Billogram
         public struct Customer
         {
         }
+        public struct Invoice
+        {
+        }
+        public struct Items
+        {
+        }
+        public struct Settings
+        {
+        }
+        public struct Logotype
+        {
+        }
+        public struct CoverPhoto
+        {
+
+        }
+        public struct Reports
+        {
+        }
+
     }
 }
