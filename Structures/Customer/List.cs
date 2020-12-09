@@ -1,43 +1,62 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Billogram.Structures.Customer
+﻿namespace Billogram.Structures.Customer
 {
 
-    //TODO: The data objects are mixed up between customer and invoice. Change this back to normal
-    public class List : IStructureList, ICustomerStructure
-    {
-        public string status { get; set; }
-        public Data[] data { get; set; }
-        public Meta meta { get; set; }
-        public class Meta
+        public class List : IStructureList
         {
-            public string total_count { get; set; }
-        }
-        public class Data
+            public string status { get; set; }
+            public Data[] data { get; set; }
+            public Meta meta { get; set; }
+            public class Data
             {
-                public string id { get; set; }
-                public string invoice_no { get; set; }
-                public string state { get; set; }
-                public string flags { get; set; }
-                public string invoice_date { get; set; }
-                public string due_date { get; set; }
-                public string currency { get; set; }
-                public string ocr_number { get; set; }
-                public string creditor_unique_value { get; set; }
-                public double remaining_sum { get; set; }
-                public string total_sum { get; set; }
+                public uint customer_no { get; set; }
+                public string name { get; set; }
+                public string notes { get; set; }
+                public string org_no { get; set; }
+                public string vat_no { get; set; }
+                public string language { get; set; }
+                public Contact contact { get; set; }
+                public Address address { get; set; }
+                public DeliveryAdress delivery_address { get; set; }
+                public PaymentSettings payment_settings { get; set; }
                 public string created_at { get; set; }
                 public string updated_at { get; set; }
-                public Customer customer { get; set; }
-                public class Customer
+                public string company_type { get; set; }
+
+
+                public class Contact
                 {
-                    public int number { get; set; }
-                    public string org_no { get; set; }
                     public string name { get; set; }
                     public string email { get; set; }
+                    public string phone { get; set; }
+                }
+                public class Address
+                {
+                    public string careof { get; set; }
+                    public bool use_careof_as_attention { get; set; }
+                    public string street_address { get; set; }
+                    public string zipcode { get; set; }
+                    public string city { get; set; }
+                    public string country { get; set; }
+                }
+                public class DeliveryAdress
+                {
+                    public string name { get; set; }
+                    public string street_address { get; set; }
+                    public string careof { get; set; }
+                    public string zipcode { get; set; }
+                    public string city { get; set; }
+                    public string country { get; set; }
+                }
+                public class PaymentSettings
+                {
+                    public string recurring_payment_type { get; set; }
                 }
             }
+            public class Meta
+            {
+                public string total_count { get; set; }
+            }
+        }
     }
-}
+
+  
