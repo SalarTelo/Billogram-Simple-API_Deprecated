@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 namespace Billogram
 {
-    public sealed class BillogramClient 
+    public sealed partial class BillogramClient 
     {
         private HttpClient m_client;
         private string m_APIKey;
@@ -193,13 +193,12 @@ namespace Billogram
                 return null;
             }
         }
-        
         public async Task<T> DeleteUnique<T>(object id) where T : class, Structures.IStructureUnique
         {
             string temp = string.Empty;
 
             if (typeof(T) == typeof(Structures.Item.Unique))
-                temp = "/item";
+                temp = "/item/"+id.ToString();
             else
                 return null;
             var url = m_baseURL + temp;
@@ -274,7 +273,6 @@ namespace Billogram
                 return null;
             }
         }
-
         public async Task<T> Upload<T>(T data) where T : class, Structures.IStructureUnique
         {
             string temp = string.Empty;
@@ -300,6 +298,13 @@ namespace Billogram
                 return null;
             }
         }
+    }
+
+
+    public sealed partial class BillogramClient
+    {
+        
+        public async Task<
     }
 
 
