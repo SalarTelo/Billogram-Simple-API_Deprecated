@@ -95,7 +95,7 @@ namespace Billogram
                 var response = await m_client.PostAsync(url, dataContent);
                 response.EnsureSuccessStatusCode();
                 string responseBody = await response.Content.ReadAsStringAsync();
-                var deserializedObject = JsonConvert.DeserializeObject<T>(responseBody);
+                var deserializedObject = JsonConvert.DeserializeObject<Structures.Invoice.Unique>(responseBody);
                 return deserializedObject;
             }
             catch

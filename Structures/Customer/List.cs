@@ -4,10 +4,17 @@ using System.Text;
 
 namespace Billogram.Structures.Customer
 {
+
+    //TODO: The data objects are mixed up between customer and invoice. Change this back to normal
     public class List : IStructureList, ICustomerStructure
     {
         public string status { get; set; }
         public Data[] data { get; set; }
+        public Meta meta { get; set; }
+        public class Meta
+        {
+            public string total_count { get; set; }
+        }
         public class Data
             {
                 public string id { get; set; }
