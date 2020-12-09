@@ -1,7 +1,7 @@
-﻿namespace Billogram.Structures.Customer
+﻿namespace Billogram.Structures.Invoice
 {
-   public class Unique
-   {
+   public class Unique : IStructureUnique, IInvoiceStructure
+    {
        public Data data { get; set; }
        public class Data
        {

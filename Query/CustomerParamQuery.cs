@@ -1,7 +1,11 @@
 ﻿namespace Billogram.Query
 {
-    public class CustomerParamQuery : QueryParameter
+    public sealed class CustomerParamQuery : QuerySearchParameter
     {
+        public CustomerParamQuery()
+        {
+            
+        }
         public SearchField Search_Field { get; set; }
         public OrderField Order_Field { get; set; }
         private string FilterParam()
@@ -132,6 +136,7 @@
             }
             return temp + GetOrderDirection;
         }
+
         public override string GetParam()
         {
             return base.GetParam() + FilterParam() + OrderParam();

@@ -1,8 +1,7 @@
-﻿namespace Billogram.Structures
+﻿namespace Billogram.Structures.Invoice
 {
-    namespace Customer
-    {
-        public class List
+
+        public class List : IStructureList, IInvoiceStructure
         {
             public string status { get; set; }
             public Data[] data { get; set; }
@@ -61,4 +60,3 @@
     }
 
   
-}

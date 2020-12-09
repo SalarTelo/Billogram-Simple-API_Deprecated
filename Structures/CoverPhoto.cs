@@ -1,6 +1,6 @@
 ﻿namespace Billogram.Structures
 {
-    public class CoverPhoto
+    public class CoverPhoto : IStructureUnique, IFetchable
     {
         public Data data { get; set; }
         public class Data

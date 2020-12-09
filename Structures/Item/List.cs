@@ -1,6 +1,6 @@
 ﻿namespace Billogram.Structures.Item
 {
-    public class List
+    public class List : IStructureList
     {
         public string status { get; set; }
         public Meta meta { get; set; }

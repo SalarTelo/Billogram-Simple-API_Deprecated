@@ -1,6 +1,6 @@
 ﻿namespace Billogram.Query
 {
-    public sealed class ItemParamQuery : QueryParameter
+    public sealed class ItemParamQuery : QuerySearchParameter
     {
 
         public SearchField Search_Field { get; set; }

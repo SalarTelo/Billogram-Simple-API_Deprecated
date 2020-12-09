@@ -4,9 +4,9 @@ using System.Text;
 
 namespace Billogram.Query
 {
-    public class QueryParameter
+    public class QuerySearchParameter
     {
-        public QueryParameter()
+        public QuerySearchParameter()
         {
             Page = 1;
             Page_Size = int.MaxValue;
@@ -14,7 +14,7 @@ namespace Billogram.Query
             Order_Direction = OrderDirection.Ascending;
         }
 
-        public QueryParameter(int page, int page_size)
+        public QuerySearchParameter(int page, int page_size)
         {
             Page = page;
             Page_Size = page_size;

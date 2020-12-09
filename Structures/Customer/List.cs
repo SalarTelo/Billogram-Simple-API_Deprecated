@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Billogram.Structures.Invoice
+namespace Billogram.Structures.Customer
 {
-    public class List
-        {
-            public Data[] data { get; set; }
-            public class Data
+    public class List : IStructureList, ICustomerStructure
+    {
+        public string status { get; set; }
+        public Data[] data { get; set; }
+        public class Data
             {
                 public string id { get; set; }
                 public string invoice_no { get; set; }
@@ -31,5 +32,5 @@ namespace Billogram.Structures.Invoice
                     public string email { get; set; }
                 }
             }
-        }
+    }
 }

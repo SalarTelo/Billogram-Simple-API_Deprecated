@@ -1,6 +1,6 @@
 ﻿namespace Billogram.Structures
 {
-    public class Logotypes
+    public class Logotypes: IStructureUnique, IFetchable
     {
         public Data data { get; set; }
         public class Data {
