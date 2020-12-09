@@ -301,11 +301,7 @@ namespace Billogram
     }
 
 
-    public sealed partial class BillogramClient
-    {
-        
-        public async Task<
-    }
+  
 
 
 }

@@ -5,12 +5,10 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Billogram 
+namespace Billogram
 {
     public sealed partial class BillogramClient
     {
-      
-
         public async Task<Structures.Invoice.Unique> SendInvoice(string id, InvoiceMethods.InvoiceSendMethod method)
         {
             var sendMethod = string.Empty;
@@ -173,7 +171,7 @@ namespace Billogram
                 return null;
             }
         }
-        public async Task<Structures.Invoice.Unique> RegisterPaymentToInvoice(string id, double amount, InvoiceMethods.InvoiceCreditMode creditMode, InvoiceMethods.InvoiceCreditMethod creditMethod)
+        public async Task<Structures.Invoice.Unique> CreditInvoice(string id, double amount, InvoiceMethods.InvoiceCreditMode creditMode, InvoiceMethods.InvoiceCreditMethod creditMethod)
         {
 
             var mode = string.Empty;
@@ -237,7 +235,132 @@ namespace Billogram
                 return null;
             }
         }
-
+        public async Task<Structures.Invoice.Unique> WriteOffInvoice(string id)
+        {
+            var url = $"{m_baseURL}/billogram/{id}/command/writeoff";
+            var jsonContent = JsonConvert.SerializeObject(new { }, Formatting.Indented);
+            var dataContent = new StringContent(jsonContent);
+            try
+            {
+                var response = await m_client.PostAsync(url, dataContent);
+                response.EnsureSuccessStatusCode();
+                string responseBody = await response.Content.ReadAsStringAsync();
+                var deserializedObject = JsonConvert.DeserializeObject<Structures.Invoice.Unique>(responseBody);
+                return deserializedObject;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+        public async Task<Structures.Invoice.Unique> WriteDownInvoice(string id)
+        {
+            var url = $"{m_baseURL}/billogram/{id}/command/writedown";
+            var jsonContent = JsonConvert.SerializeObject(new { }, Formatting.Indented);
+            var dataContent = new StringContent(jsonContent);
+            try
+            {
+                var response = await m_client.PostAsync(url, dataContent);
+                response.EnsureSuccessStatusCode();
+                string responseBody = await response.Content.ReadAsStringAsync();
+                var deserializedObject = JsonConvert.DeserializeObject<Structures.Invoice.Unique>(responseBody);
+                return deserializedObject;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+        public async Task<Structures.Invoice.Unique> RevertWriteDown(string id)
+        {
+            var url = $"{m_baseURL}/billogram/{id}/command/revert-writedown";
+            var jsonContent = JsonConvert.SerializeObject(new {}, Formatting.Indented);
+            var dataContent = new StringContent(jsonContent);
+            try
+            {
+                var response = await m_client.PostAsync(url, dataContent);
+                response.EnsureSuccessStatusCode();
+                string responseBody = await response.Content.ReadAsStringAsync();
+                var deserializedObject = JsonConvert.DeserializeObject<Structures.Invoice.Unique>(responseBody);
+                return deserializedObject;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+        public async Task<Structures.Invoice.Unique> SetInvoiceRespite(string id, Structures.BillogramDate date)
+        {
+            var url = $"{m_baseURL}/billogram/{id}/command/respite";
+            var jsonContent = JsonConvert.SerializeObject(new { date = date.Parse() }, Formatting.Indented);
+            var dataContent = new StringContent(jsonContent);
+            try
+            {
+                var response = await m_client.PostAsync(url, dataContent);
+                response.EnsureSuccessStatusCode();
+                string responseBody = await response.Content.ReadAsStringAsync();
+                var deserializedObject = JsonConvert.DeserializeObject<Structures.Invoice.Unique>(responseBody);
+                return deserializedObject;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+        public async Task<Structures.Invoice.Unique> RemoveInvoiceRespite(string id)
+        {
+            var url = $"{m_baseURL}/billogram/{id}/command/remove-respite";
+            var jsonContent = JsonConvert.SerializeObject(new { }, Formatting.Indented);
+            var dataContent = new StringContent(jsonContent);
+            try
+            {
+                var response = await m_client.PostAsync(url, dataContent);
+                response.EnsureSuccessStatusCode();
+                string responseBody = await response.Content.ReadAsStringAsync();
+                var deserializedObject = JsonConvert.DeserializeObject<Structures.Invoice.Unique>(responseBody);
+                return deserializedObject;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+        public async Task<Structures.Invoice.Unique> AddMessageeToInvoice(string id, string message)
+        {
+            var url = $"{m_baseURL}/billogram/{id}/command/message";
+            var jsonContent = JsonConvert.SerializeObject(new { message = message}, Formatting.Indented);
+            var dataContent = new StringContent(jsonContent);
+            try
+            {
+                var response = await m_client.PostAsync(url, dataContent);
+                response.EnsureSuccessStatusCode();
+                string responseBody = await response.Content.ReadAsStringAsync();
+                var deserializedObject = JsonConvert.DeserializeObject<Structures.Invoice.Unique>(responseBody);
+                return deserializedObject;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+        public async Task<Structures.Invoice.Unique> AddPDFAttachmentToInvoice(string id, string filename, string content)
+        {
+            var url = $"{m_baseURL}/billogram/{id}/command/attach";
+            var jsonContent = JsonConvert.SerializeObject(new { filename = filename, content = content }, Formatting.Indented);
+            var dataContent = new StringContent(jsonContent);
+            try
+            {
+                var response = await m_client.PostAsync(url, dataContent);
+                response.EnsureSuccessStatusCode();
+                string responseBody = await response.Content.ReadAsStringAsync();
+                var deserializedObject = JsonConvert.DeserializeObject<Structures.Invoice.Unique>(responseBody);
+                return deserializedObject;
+            }
+            catch
+            {
+                return null;
+            }
+        }
     }
     public struct InvoiceMethods
     {
