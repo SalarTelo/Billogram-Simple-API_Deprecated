@@ -1,4 +1,4 @@
-﻿namespace Billogram.Structures.Invoice
+﻿namespace Billogram.Structures.Customer
 {
    public class Unique : IStructureUnique
     {

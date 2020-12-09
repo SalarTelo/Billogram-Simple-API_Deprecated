@@ -2,11 +2,10 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Billogram.Structures.Customer
+namespace Billogram.Structures.Invoice
 {
 
-    //TODO: The data objects are mixed up between customer and invoice. Change this back to normal
-    public class List : IStructureList, ICustomerStructure
+    public class List : IStructureList
     {
         public string status { get; set; }
         public Data[] data { get; set; }

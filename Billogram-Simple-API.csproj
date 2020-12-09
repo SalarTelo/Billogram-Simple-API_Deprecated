@@ -3,6 +3,11 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <RootNamespace>Billogram</RootNamespace>
+    <Version>0.0.1</Version>
+    <Authors>Salar Loran Telo</Authors>
+    <PackageId>Billogram-Simple-API-ALPHA</PackageId>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
   </PropertyGroup>
 
   <ItemGroup>

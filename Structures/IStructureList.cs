@@ -4,7 +4,8 @@ using System.Text;
 
 namespace Billogram.Structures
 {
-    public interface IStructureList
+    public interface IStructureList : IStructure
     {
+        
     }
 }
