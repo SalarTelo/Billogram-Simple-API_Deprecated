@@ -1,10 +1,11 @@
-﻿namespace Billogram.Structures
+﻿namespace Billogram.Structures.Logotypes
 {
-    public class CoverPhoto : IStructureUnique, IFetchable
+    public class Unique: IStructureUnique
     {
         public Data data { get; set; }
-        public class Data
-        {
+        public string status { get; set; }
+
+        public class Data {
             public string content { get; set; }
             public string file_type { get; set; }
         }

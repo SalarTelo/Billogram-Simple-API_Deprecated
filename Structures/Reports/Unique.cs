@@ -1,8 +1,10 @@
-﻿namespace Billogram.Structures
+﻿namespace Billogram.Structures.Reports
 {
-    public class Reports: IStructureUnique 
+    public class Unique: IStructureUnique 
     {
         public Data data { get; set; }
+        public string status { get ; set; }
+
         public class Data
         {
             public string filename { get; set; }

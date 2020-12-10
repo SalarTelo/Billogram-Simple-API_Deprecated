@@ -1,8 +1,10 @@
-﻿namespace Billogram.Structures
+﻿namespace Billogram.Structures.Settings
 {
-    public class Settings : IStructureUnique, IFetchable
+    public class Unique : IStructureUnique
     {
         public Data data { get; set; }
+        public string status { get; set; }
+
         public class Data
         {
             public string name { get; set; }

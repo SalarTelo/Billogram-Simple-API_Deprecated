@@ -1,6 +1,5 @@
 ﻿namespace Billogram.Structures.Customer
 {
-
         public class List : IStructureList
         {
             public string status { get; set; }

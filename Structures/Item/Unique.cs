@@ -7,7 +7,9 @@ namespace Billogram.Structures.Item
         public class Unique : IStructureUnique
     {
             public Data data { get; set; }
-            public class Data
+        public string status { get; set; }
+
+        public class Data
             {
                 public string item_no { get; set; }
                 public string title { get; set; }

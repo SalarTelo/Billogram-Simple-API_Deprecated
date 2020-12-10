@@ -6,5 +6,6 @@ namespace Billogram.Structures
 {
     public interface IStructure
     {
+        string status { get; set; }
     }
 }

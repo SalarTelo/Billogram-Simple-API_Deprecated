@@ -9,7 +9,7 @@ namespace Billogram.Query
         public QuerySearchParameter()
         {
             Page = 1;
-            Page_Size = int.MaxValue;
+            Page_Size = 1000000;
             Filter_Type = FilterType.None;
             Order_Direction = OrderDirection.Ascending;
         }

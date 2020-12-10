@@ -37,7 +37,7 @@ namespace Billogram
                     break;
             }
 
-            var url = $"{m_baseURL}/billogram/{id}/command/send";
+            var url = $"{m_APIBaseURL}/billogram/{id}/command/send";
             var jsonContent = JsonConvert.SerializeObject(new { method = sendMethod}, Formatting.Indented);
             var dataContent = new StringContent(jsonContent);
             try
@@ -55,7 +55,7 @@ namespace Billogram
         }
         public async Task<Structures.Invoice.Unique> SellInvoice(string id)
         {
-            var url = $"{m_baseURL}/billogram/{id}/command/sell";
+            var url = $"{m_APIBaseURL}/billogram/{id}/command/sell";
             var jsonContent = JsonConvert.SerializeObject(new { }, Formatting.Indented);
             var dataContent = new StringContent(jsonContent);
             try
@@ -87,7 +87,7 @@ namespace Billogram
                     break;
             }
 
-            var url = $"{m_baseURL}/billogram/{id}/command/resend";
+            var url = $"{m_APIBaseURL}/billogram/{id}/command/resend";
             var jsonContent = JsonConvert.SerializeObject(new { method = sendMethod }, Formatting.Indented);
             var dataContent = new StringContent(jsonContent);
             try
@@ -119,7 +119,7 @@ namespace Billogram
                     break;
             }
 
-            var url = $"{m_baseURL}/billogram/{id}/command/remind";
+            var url = $"{m_APIBaseURL}/billogram/{id}/command/remind";
             var jsonContent = JsonConvert.SerializeObject(new { method = sendMethod, message = message}, Formatting.Indented);
             var dataContent = new StringContent(jsonContent);
             try
@@ -137,7 +137,7 @@ namespace Billogram
         }
         public async Task<Structures.Invoice.Unique> SendInvoiceToCollector(string id)
         {
-            var url = $"{m_baseURL}/billogram/{id}/command/collect";
+            var url = $"{m_APIBaseURL}/billogram/{id}/command/collect";
             var jsonContent = JsonConvert.SerializeObject(new { }, Formatting.Indented);
             var dataContent = new StringContent(jsonContent);
             try
@@ -155,7 +155,7 @@ namespace Billogram
         }
         public async Task<Structures.Invoice.Unique> RegisterPaymentToInvoice(string id, double amount)
         {
-            var url = $"{m_baseURL}/billogram/{id}/command/payment";
+            var url = $"{m_APIBaseURL}/billogram/{id}/command/payment";
             var jsonContent = JsonConvert.SerializeObject(new { amount = amount }, Formatting.Indented);
             var dataContent = new StringContent(jsonContent);
             try
@@ -219,7 +219,7 @@ namespace Billogram
                     break;
             }
 
-            var url = $"{m_baseURL}/billogram/{id}/command/credit";
+            var url = $"{m_APIBaseURL}/billogram/{id}/command/credit";
             var jsonContent = JsonConvert.SerializeObject(new { amount = amount, mode = mode, method = method}, Formatting.Indented);
             var dataContent = new StringContent(jsonContent);
             try
@@ -237,7 +237,7 @@ namespace Billogram
         }
         public async Task<Structures.Invoice.Unique> WriteOffInvoice(string id)
         {
-            var url = $"{m_baseURL}/billogram/{id}/command/writeoff";
+            var url = $"{m_APIBaseURL}/billogram/{id}/command/writeoff";
             var jsonContent = JsonConvert.SerializeObject(new { }, Formatting.Indented);
             var dataContent = new StringContent(jsonContent);
             try
@@ -255,7 +255,7 @@ namespace Billogram
         }
         public async Task<Structures.Invoice.Unique> WriteDownInvoice(string id)
         {
-            var url = $"{m_baseURL}/billogram/{id}/command/writedown";
+            var url = $"{m_APIBaseURL}/billogram/{id}/command/writedown";
             var jsonContent = JsonConvert.SerializeObject(new { }, Formatting.Indented);
             var dataContent = new StringContent(jsonContent);
             try
@@ -273,7 +273,7 @@ namespace Billogram
         }
         public async Task<Structures.Invoice.Unique> RevertWriteDown(string id)
         {
-            var url = $"{m_baseURL}/billogram/{id}/command/revert-writedown";
+            var url = $"{m_APIBaseURL}/billogram/{id}/command/revert-writedown";
             var jsonContent = JsonConvert.SerializeObject(new {}, Formatting.Indented);
             var dataContent = new StringContent(jsonContent);
             try
@@ -291,7 +291,7 @@ namespace Billogram
         }
         public async Task<Structures.Invoice.Unique> SetInvoiceRespite(string id, Structures.BillogramDate date)
         {
-            var url = $"{m_baseURL}/billogram/{id}/command/respite";
+            var url = $"{m_APIBaseURL}/billogram/{id}/command/respite";
             var jsonContent = JsonConvert.SerializeObject(new { date = date.Parse() }, Formatting.Indented);
             var dataContent = new StringContent(jsonContent);
             try
@@ -309,7 +309,7 @@ namespace Billogram
         }
         public async Task<Structures.Invoice.Unique> RemoveInvoiceRespite(string id)
         {
-            var url = $"{m_baseURL}/billogram/{id}/command/remove-respite";
+            var url = $"{m_APIBaseURL}/billogram/{id}/command/remove-respite";
             var jsonContent = JsonConvert.SerializeObject(new { }, Formatting.Indented);
             var dataContent = new StringContent(jsonContent);
             try
@@ -327,7 +327,7 @@ namespace Billogram
         }
         public async Task<Structures.Invoice.Unique> AddMessageeToInvoice(string id, string message)
         {
-            var url = $"{m_baseURL}/billogram/{id}/command/message";
+            var url = $"{m_APIBaseURL}/billogram/{id}/command/message";
             var jsonContent = JsonConvert.SerializeObject(new { message = message}, Formatting.Indented);
             var dataContent = new StringContent(jsonContent);
             try
@@ -345,7 +345,7 @@ namespace Billogram
         }
         public async Task<Structures.Invoice.Unique> AddPDFAttachmentToInvoice(string id, string filename, string content)
         {
-            var url = $"{m_baseURL}/billogram/{id}/command/attach";
+            var url = $"{m_APIBaseURL}/billogram/{id}/command/attach";
             var jsonContent = JsonConvert.SerializeObject(new { filename = filename, content = content }, Formatting.Indented);
             var dataContent = new StringContent(jsonContent);
             try

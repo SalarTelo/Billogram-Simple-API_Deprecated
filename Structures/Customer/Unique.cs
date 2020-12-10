@@ -3,7 +3,9 @@
    public class Unique : IStructureUnique
     {
        public Data data { get; set; }
-       public class Data
+       public string status { get; set; }
+
+        public class Data
        {
            public uint customer_no { get; set; }
            public string name { get; set; }

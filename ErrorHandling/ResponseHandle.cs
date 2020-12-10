@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Billogram.ResponseHandling
+namespace Billogram.Handles
 {
-    public sealed class ResponseHandle<T> where T : class, Structures.IStructure, IRespondable
+    public sealed class ResponseHandle<T> where T : class, Structures.IStructure
     {
         public T Content { get { return m_responseBody; } }
 
@@ -14,6 +14,7 @@ namespace Billogram.ResponseHandling
         public ResponseHandle(T handle)
         {
             m_responseBody = handle;
+            
         }
 
         public static implicit operator ResponseHandle<T>(T handle)

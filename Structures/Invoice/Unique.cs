@@ -4,6 +4,8 @@
     public class Unique : IStructureUnique
     {
         public Data data { get; set; }
+        public string status { get; set; }
+
         public class Data
         {
             public string id { get; set; }
