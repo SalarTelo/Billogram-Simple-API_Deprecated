@@ -10,7 +10,7 @@ namespace Billogram
 {
     public sealed partial class APIClient
     {
-        public async Task<StatusObject> TestConnection()
+        public async Task<StatusObject> TryConnecting()
         {
             var url = m_APIBaseURL + "/customer" + "?page=" + 1 + "&page_size=" + 1;
             try
