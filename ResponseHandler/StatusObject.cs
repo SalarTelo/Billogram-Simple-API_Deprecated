@@ -3,26 +3,29 @@ namespace Billogram.Handle
 {
     public class StatusObject
     {
-        public ResponseCode m_response;
+        /// <summary>
+        /// Enum with specific response code from server.
+        /// </summary>
+        public readonly ResponseCode Response;
 
         public static implicit operator StatusObject(string handle)
         {
             return handle == null ? null : new StatusObject(handle);
         }
-        public static implicit operator ResponseCode(StatusObject status) 
+        public static implicit operator ResponseCode(StatusObject status)
         {
-            return status.m_response;
+            return status.Response;
         }
         public static implicit operator bool(StatusObject status)
         {
-            return status.m_response == ResponseCode.OK;
+            return status.Response == ResponseCode.OK;
         }
-        
+
         public StatusObject(string status)
         {
-            if (!Enum.TryParse<ResponseCode>(status, out m_response))
+            if (!Enum.TryParse<ResponseCode>(status, out Response))
             {
-                m_response = ResponseCode.ERROR_INVALID_OR_UNKNOWN_RESPONSE_CODE;
+                Response = ResponseCode.ERROR_INVALID_OR_UNKNOWN_RESPONSE_CODE;
             }
         }
     }

@@ -4,16 +4,21 @@ using System.Text;
 using Billogram.Structures;
 namespace Billogram.Handle
 {
+    /// <summary>
+    /// A substitute to any structure to handle any errors or response. 
+    /// </summary>
+    /// <typeparam name="T">Any structure that derives from IStructure interface</typeparam>
     public class SafetyHandle<T> where T : class, IStructure
     {
+        /// <summary>
+        /// The content of the structure retrieved from server.
+        /// </summary>
         public T Content { get { return m_responseBody; } }
-        public string ResponseMessage 
-        { 
-            get 
-            { 
-                return "test"; 
-            } 
-        }
+
+        /// <summary>
+        /// The response object that handles the response-code from the request.
+        /// </summary>
+        public StatusObject Status { get { return statusHandle; } }
 
         protected T m_responseBody;
         protected StatusObject statusHandle;

@@ -345,7 +345,7 @@ namespace Billogram
         public async Task<Structures.Invoice.Unique> SetInvoiceRespite(string id, Structures.BillogramDate date)
         {
             var url = $"{m_APIBaseURL}/billogram/{id}/command/respite";
-            var jsonContent = JsonConvert.SerializeObject(new { date = date.Parse() }, Formatting.Indented);
+            var jsonContent = JsonConvert.SerializeObject(new { date = date.Format() }, Formatting.Indented);
             var dataContent = new StringContent(jsonContent);
             try
             {
@@ -429,6 +429,7 @@ namespace Billogram
             }
         }
     }
+
     public struct InvoiceMethods
     {
         public enum InvoiceSendMethod

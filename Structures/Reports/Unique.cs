@@ -1,9 +1,9 @@
 ﻿namespace Billogram.Structures.Reports
 {
-    public class Unique: IStructureUnique 
+    public class Unique : IStructureUnique
     {
         public Data data { get; set; }
-        public string status { get ; set; }
+        public string status { get; set; }
 
         public class Data
         {

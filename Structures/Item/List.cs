@@ -5,7 +5,7 @@
         public string status { get; set; }
         public Meta meta { get; set; }
         public Data[] data { get; set; }
-    
+
         public class Meta
         {
             public int total_count { get; set; }
@@ -21,13 +21,13 @@
             public BookKeeping bookkeeping { get; set; }
             public string created_at { get; set; }
             public string updated_at { get; set; }
-    
+
             public class BookKeeping
             {
                 public string income_account { get; set; }
                 public string vat_account { get; set; }
             }
         }
-    
-    }   
+
+    }
 }

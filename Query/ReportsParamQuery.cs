@@ -2,7 +2,13 @@
 {
     public sealed class ReportsParamQuery : QuerySearchParameter
     {
+        /// <summary>
+        /// Name of the field to search in.
+        /// </summary>
         public SearchField Search_Field { get; set; }
+        /// <summary>
+        /// Name of the field to order the results by. 
+        /// </summary>
         public OrderField Order_Field { get; set; }
 
         private string FilterParam()
@@ -53,10 +59,18 @@
         {
             return base.Param() + FilterParam() + OrderParam();
         }
+
+        /// <summary>
+        /// Name of the field to search in.
+        /// </summary>
         public enum SearchField
         {
             Filename
         }
+
+        /// <summary>
+        /// Name of the field to order the results by. 
+        /// </summary>
         public enum OrderField
         {
             None,
