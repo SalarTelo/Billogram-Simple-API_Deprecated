@@ -2,26 +2,26 @@
 using System.Linq;
 using System.Text;
 using Billogram.Structures;
-namespace Billogram.Handles
+namespace Billogram.Handle
 {
-    public class ResponseHandle<T> where T : class, IStructure
+    public class SafetyHandle<T> where T : class, IStructure
     {
         public T Content { get { return m_responseBody; } }
         protected T m_responseBody;
         protected StatusObject statusHandle;
 
-        public ResponseHandle(T handle)
+        public SafetyHandle(T handle)
         {
             m_responseBody = handle;
             statusHandle = handle.status;
         }
 
-        public static implicit operator ResponseHandle<T>(T handle)
+        public static implicit operator SafetyHandle<T>(T handle)
         {
-            return handle == null ? null : new ResponseHandle<T>(handle);
+            return handle == null ? null : new SafetyHandle<T>(handle);
         }
 
-        public static implicit operator T(ResponseHandle<T> returnHandle) 
+        public static implicit operator T(SafetyHandle<T> returnHandle) 
         {
             return returnHandle.m_responseBody;
         }

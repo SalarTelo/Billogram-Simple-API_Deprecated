@@ -1,4 +1,4 @@
-﻿namespace Billogram.Handles
+﻿namespace Billogram.Handle
 {
     public enum ResponseCode
     {

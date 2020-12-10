@@ -1,5 +1,5 @@
 ﻿using System;
-namespace Billogram.Handles
+namespace Billogram.Handle
 {
     public class StatusObject
     {
@@ -12,6 +12,10 @@ namespace Billogram.Handles
         public static implicit operator ResponseCode(StatusObject returnHandle) 
         {
             return returnHandle.m_response;
+        }
+        public static implicit operator bool(StatusObject returnHandle)
+        {
+            return returnHandle.m_response == ResponseCode.OK;
         }
         public StatusObject(string status)
         {
