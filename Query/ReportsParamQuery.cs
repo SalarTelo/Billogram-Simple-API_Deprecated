@@ -28,7 +28,7 @@
             switch (Search_Field)
             {
                 case SearchField.Filename:
-                    temp += "&filter_field=filename"; 
+                    temp += "&filter_field=filename";
                     break;
             }
             return temp;
@@ -49,9 +49,9 @@
             }
             return temp + GetOrderDirection;
         }
-        public override string GetParam()
+        public override string Param()
         {
-            return base.GetParam() + FilterParam() + OrderParam();
+            return base.Param() + FilterParam() + OrderParam();
         }
         public enum SearchField
         {

@@ -6,6 +6,6 @@ namespace Billogram.Structures
 {
     public interface IStructureList : IStructure
     {
-        
+
     }
 }

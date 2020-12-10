@@ -4,29 +4,30 @@ using System.Text;
 
 namespace Billogram.Query
 {
+    /// <summary>
+    /// The base-class for any filtering and/or ordering when fetching of server.
+    /// </summary>
     public class QuerySearchParameter
     {
-        public QuerySearchParameter()
-        {
-            Page = 1;
-            Page_Size = 1000000;
-            Filter_Type = FilterType.None;
-            Order_Direction = OrderDirection.Ascending;
-        }
-
-        public QuerySearchParameter(int page, int page_size)
+        /// <summary>
+        /// The required parameters for any query. The rest can be set later on through the provided fields. NOTE: Even if no filtering or ordering is requested; 
+        /// page and page_size is required for all types of search.
+        /// </summary>
+        /// <param name="page">The page of being retrieved. Set to 1 by default.</param>
+        /// <param name="page_size">The amount of data being retrieved per page. Set to 10000000 by default.</param>
+        public QuerySearchParameter(int page = 1, int page_size = 10000000)
         {
             Page = page;
             Page_Size = page_size;
             Filter_Type = FilterType.None;
             Order_Direction = OrderDirection.Ascending;
         }
-       
-        public int Page { get; set; }
-        public int Page_Size { get; set; }
 
-        public FilterType Filter_Type { get; set; }
-        public OrderDirection Order_Direction { get; set; }
+        public readonly int Page;
+        public readonly int Page_Size;
+
+        public readonly FilterType Filter_Type;
+        public readonly OrderDirection Order_Direction;
 
         protected string GetOrderDirection
         {
@@ -42,9 +43,9 @@ namespace Billogram.Query
                 return "";
             }
         }
-        public virtual string GetParam()
+        public virtual string Param()
         {
-            return $"?page={Page}&page_size={Page_Size}";   
+            return $"?page={Page}&page_size={Page_Size}";
         }
     }
     public enum FilterType

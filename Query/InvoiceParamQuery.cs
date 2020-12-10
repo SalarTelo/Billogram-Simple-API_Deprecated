@@ -88,11 +88,11 @@
             }
             return temp + GetOrderDirection;
         }
-        public override string GetParam()
+        public override string Param()
         {
-            return base.GetParam() + FilterParam() + OrderParam();
+            return base.Param() + FilterParam() + OrderParam();
         }
-        public enum SearchField 
+        public enum SearchField
         {
             Id,
             Invoice_No,
@@ -105,7 +105,7 @@
             State,
             Creditor_Unique_Value
         }
-        public enum OrderField 
+        public enum OrderField
         {
             Invoice_No,
             Invoice_Date,

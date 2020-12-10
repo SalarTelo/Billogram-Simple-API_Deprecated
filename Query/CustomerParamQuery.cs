@@ -4,7 +4,7 @@
     {
         public CustomerParamQuery()
         {
-            
+
         }
         public SearchField Search_Field { get; set; }
         public OrderField Order_Field { get; set; }
@@ -98,7 +98,7 @@
                 case OrderField.None:
                     return temp;
                 case OrderField.Customer_No:
-                    temp += "&order_field=customer_no"; 
+                    temp += "&order_field=customer_no";
                     break;
                 case OrderField.Name:
                     temp += "&order_field=name";
@@ -137,9 +137,9 @@
             return temp + GetOrderDirection;
         }
 
-        public override string GetParam()
+        public override string Param()
         {
-            return base.GetParam() + FilterParam() + OrderParam();
+            return base.Param() + FilterParam() + OrderParam();
         }
         public enum SearchField
         {

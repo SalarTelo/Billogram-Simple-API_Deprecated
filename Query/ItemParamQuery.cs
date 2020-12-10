@@ -80,9 +80,9 @@
             }
             return temp + GetOrderDirection;
         }
-        public override string GetParam()
+        public override string Param()
         {
-            return base.GetParam() + FilterParam() + OrderParam();
+            return base.Param() + FilterParam() + OrderParam();
         }
 
         public enum SearchField

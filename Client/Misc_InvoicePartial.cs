@@ -6,6 +6,12 @@ namespace Billogram
 {
     public sealed partial class APIClient
     {
+        /// <summary>
+        /// Send an invoice.
+        /// </summary>
+        /// <param name="id">The id of unique invoice.</param>
+        /// <param name="method">The method of which to send the invoice.</param>
+        /// <returns>The updated data of the invoice.</returns>
         public async Task<Structures.Invoice.Unique> SendInvoice(string id, InvoiceMethods.InvoiceSendMethod method)
         {
             var sendMethod = string.Empty;
@@ -35,7 +41,7 @@ namespace Billogram
             }
 
             var url = $"{m_APIBaseURL}/billogram/{id}/command/send";
-            var jsonContent = JsonConvert.SerializeObject(new { method = sendMethod}, Formatting.Indented);
+            var jsonContent = JsonConvert.SerializeObject(new { method = sendMethod }, Formatting.Indented);
             var dataContent = new StringContent(jsonContent);
             try
             {
@@ -50,6 +56,11 @@ namespace Billogram
                 return null;
             }
         }
+        /// <summary>
+        /// Sell an invoice.
+        /// </summary>
+        /// <param name="id">The id of unique invoice.</param>
+        /// <returns>The updated data of the invoice.</returns>
         public async Task<Structures.Invoice.Unique> SellInvoice(string id)
         {
             var url = $"{m_APIBaseURL}/billogram/{id}/command/sell";
@@ -57,7 +68,7 @@ namespace Billogram
             var dataContent = new StringContent(jsonContent);
             try
             {
-                var response = await m_client.PostAsync(url,dataContent);
+                var response = await m_client.PostAsync(url, dataContent);
                 string responseBody = await response.Content.ReadAsStringAsync();
                 var deserializedObject = JsonConvert.DeserializeObject<Structures.Invoice.Unique>(responseBody);
                 return deserializedObject;
@@ -67,6 +78,12 @@ namespace Billogram
                 return null;
             }
         }
+        /// <summary>
+        /// Re-send and invoice.
+        /// </summary>
+        /// <param name="id">The id of unique invoice.</param>
+        /// <param name="method">The method of which to resend the invoice.</param>
+        /// <returns>The updated data of the invoice.</returns>
         public async Task<Structures.Invoice.Unique> ReSendInvoice(string id, InvoiceMethods.InvoiceResendMethod method)
         {
             var sendMethod = string.Empty;
@@ -98,6 +115,13 @@ namespace Billogram
                 return null;
             }
         }
+        /// <summary>
+        /// Send an invoice-reminder.
+        /// </summary>
+        /// <param name="id">The id of unique invoice.</param>
+        /// <param name="method">The method of which to send the reminder.</param>
+        /// <param name="message">The message attached with the reminder.</param>
+        /// <returns>The updated data of the invoice.</returns>
         public async Task<Structures.Invoice.Unique> SendInvoiceReminder(string id, InvoiceMethods.InvoiceReminderMethod method, string message)
         {
             var sendMethod = string.Empty;
@@ -115,7 +139,7 @@ namespace Billogram
             }
 
             var url = $"{m_APIBaseURL}/billogram/{id}/command/remind";
-            var jsonContent = JsonConvert.SerializeObject(new { method = sendMethod, message = message}, Formatting.Indented);
+            var jsonContent = JsonConvert.SerializeObject(new { method = sendMethod, message = message }, Formatting.Indented);
             var dataContent = new StringContent(jsonContent);
             try
             {
@@ -129,6 +153,11 @@ namespace Billogram
                 return null;
             }
         }
+        /// <summary>
+        /// Send an invoice to the collector.
+        /// </summary>
+        /// <param name="id">The id of unique invoice.</param>
+        /// <returns>The updated data of the invoice.</returns>
         public async Task<Structures.Invoice.Unique> SendInvoiceToCollector(string id)
         {
             var url = $"{m_APIBaseURL}/billogram/{id}/command/collect";
@@ -146,6 +175,12 @@ namespace Billogram
                 return null;
             }
         }
+        /// <summary>
+        /// Register payment to invoice.
+        /// </summary>
+        /// <param name="id">The id of unique invoice.</param>
+        /// <param name="amount">The total amount being registered.</param>
+        /// <returns>The updated data of the invoice.</returns>
         public async Task<Structures.Invoice.Unique> RegisterPaymentToInvoice(string id, double amount)
         {
             var url = $"{m_APIBaseURL}/billogram/{id}/command/payment";
@@ -163,6 +198,14 @@ namespace Billogram
                 return null;
             }
         }
+        /// <summary>
+        /// Credit an invoice.
+        /// </summary>
+        /// <param name="id">The id of unique invoice.</param>
+        /// <param name="amount">The total amount being credited.</param>
+        /// <param name="creditMode">The type of credit being handed.</param>
+        /// <param name="creditMethod">The method of which to credit.</param>
+        /// <returns>The updated data of the invoice.</returns>
         public async Task<Structures.Invoice.Unique> CreditInvoice(string id, double amount, InvoiceMethods.InvoiceCreditMode creditMode, InvoiceMethods.InvoiceCreditMethod creditMethod)
         {
 
@@ -188,7 +231,7 @@ namespace Billogram
                     break;
             }
 
-            
+
             switch (creditMethod)
             {
                 case InvoiceMethods.InvoiceCreditMethod.Email:
@@ -212,7 +255,7 @@ namespace Billogram
             }
 
             var url = $"{m_APIBaseURL}/billogram/{id}/command/credit";
-            var jsonContent = JsonConvert.SerializeObject(new { amount = amount, mode = mode, method = method}, Formatting.Indented);
+            var jsonContent = JsonConvert.SerializeObject(new { amount = amount, mode = mode, method = method }, Formatting.Indented);
             var dataContent = new StringContent(jsonContent);
             try
             {
@@ -226,6 +269,11 @@ namespace Billogram
                 return null;
             }
         }
+        /// <summary>
+        /// Write off an invoice.
+        /// </summary>
+        /// <param name="id">The id of unique invoice.</param>
+        /// <returns>The updated data of the invoice.</returns>
         public async Task<Structures.Invoice.Unique> WriteOffInvoice(string id)
         {
             var url = $"{m_APIBaseURL}/billogram/{id}/command/writeoff";
@@ -243,6 +291,11 @@ namespace Billogram
                 return null;
             }
         }
+        /// <summary>
+        /// Write-down an invoice.
+        /// </summary>
+        /// <param name="id">The id of unique invoice.</param>
+        /// <returns>The updated data of the invoice.</returns>
         public async Task<Structures.Invoice.Unique> WriteDownInvoice(string id)
         {
             var url = $"{m_APIBaseURL}/billogram/{id}/command/writedown";
@@ -261,10 +314,15 @@ namespace Billogram
                 return null;
             }
         }
+        /// <summary>
+        /// Revert write-down.
+        /// </summary>
+        /// <param name="id">The id of unique invoice.</param>
+        /// <returns>The updated data of the invoice.</returns>
         public async Task<Structures.Invoice.Unique> RevertWriteDown(string id)
         {
             var url = $"{m_APIBaseURL}/billogram/{id}/command/revert-writedown";
-            var jsonContent = JsonConvert.SerializeObject(new {}, Formatting.Indented);
+            var jsonContent = JsonConvert.SerializeObject(new { }, Formatting.Indented);
             var dataContent = new StringContent(jsonContent);
             try
             {
@@ -278,6 +336,12 @@ namespace Billogram
                 return null;
             }
         }
+        /// <summary>
+        /// Set invoice respite.
+        /// </summary>
+        /// <param name="id">The id of unique invoice.</param>
+        /// <param name="date">The date to which the respite will be set. MUST BE SET TO A FUTURE DATE AND AFTER BILLOGRAM DUE DATE.</param>
+        /// <returns>The updated data of the invoice.</returns>
         public async Task<Structures.Invoice.Unique> SetInvoiceRespite(string id, Structures.BillogramDate date)
         {
             var url = $"{m_APIBaseURL}/billogram/{id}/command/respite";
@@ -295,6 +359,11 @@ namespace Billogram
                 return null;
             }
         }
+        /// <summary>
+        /// Remove invoice respite.
+        /// </summary>
+        /// <param name="id">The id of unique invoice.</param>
+        /// <returns>The updated data of the invoice.</returns>
         public async Task<Structures.Invoice.Unique> RemoveInvoiceRespite(string id)
         {
             var url = $"{m_APIBaseURL}/billogram/{id}/command/remove-respite";
@@ -312,10 +381,16 @@ namespace Billogram
                 return null;
             }
         }
+        /// <summary>
+        /// Add message to Invoice.
+        /// </summary>
+        /// <param name="id">The id of unique invoice.</param>
+        /// <param name="message">The message to be added.</param>
+        /// <returns>The updated data of the invoice.</returns>
         public async Task<Structures.Invoice.Unique> AddMessageeToInvoice(string id, string message)
         {
             var url = $"{m_APIBaseURL}/billogram/{id}/command/message";
-            var jsonContent = JsonConvert.SerializeObject(new { message = message}, Formatting.Indented);
+            var jsonContent = JsonConvert.SerializeObject(new { message = message }, Formatting.Indented);
             var dataContent = new StringContent(jsonContent);
             try
             {
@@ -329,6 +404,13 @@ namespace Billogram
                 return null;
             }
         }
+        /// <summary>
+        /// Add a PDF-attachment to invoice.
+        /// </summary>
+        /// <param name="id">The id of unique invoice.</param>
+        /// <param name="filename">The name of the file.</param>
+        /// <param name="content">The content (base64 encoded) of the PDF file that you wish to attach.</param>
+        /// <returns>The updated data of the invoice.</returns>
         public async Task<Structures.Invoice.Unique> AddPDFAttachmentToInvoice(string id, string filename, string content)
         {
             var url = $"{m_APIBaseURL}/billogram/{id}/command/attach";
