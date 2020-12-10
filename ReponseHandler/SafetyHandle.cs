@@ -7,9 +7,17 @@ namespace Billogram.Handle
     public class SafetyHandle<T> where T : class, IStructure
     {
         public T Content { get { return m_responseBody; } }
+        public string ResponseMessage 
+        { 
+            get 
+            { 
+                return "test"; 
+            } 
+        }
+
         protected T m_responseBody;
         protected StatusObject statusHandle;
-
+        
         public SafetyHandle(T handle)
         {
             m_responseBody = handle;

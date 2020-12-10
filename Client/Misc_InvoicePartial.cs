@@ -1,13 +1,10 @@
 ﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
 using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Billogram
 {
-    public sealed partial class BillogramClient
+    public sealed partial class APIClient
     {
         public async Task<Structures.Invoice.Unique> SendInvoice(string id, InvoiceMethods.InvoiceSendMethod method)
         {
@@ -61,7 +58,6 @@ namespace Billogram
             try
             {
                 var response = await m_client.PostAsync(url,dataContent);
-                response.EnsureSuccessStatusCode();
                 string responseBody = await response.Content.ReadAsStringAsync();
                 var deserializedObject = JsonConvert.DeserializeObject<Structures.Invoice.Unique>(responseBody);
                 return deserializedObject;
@@ -93,7 +89,6 @@ namespace Billogram
             try
             {
                 var response = await m_client.PostAsync(url, dataContent);
-                response.EnsureSuccessStatusCode();
                 string responseBody = await response.Content.ReadAsStringAsync();
                 var deserializedObject = JsonConvert.DeserializeObject<Structures.Invoice.Unique>(responseBody);
                 return deserializedObject;
@@ -125,7 +120,6 @@ namespace Billogram
             try
             {
                 var response = await m_client.PostAsync(url, dataContent);
-                response.EnsureSuccessStatusCode();
                 string responseBody = await response.Content.ReadAsStringAsync();
                 var deserializedObject = JsonConvert.DeserializeObject<Structures.Invoice.Unique>(responseBody);
                 return deserializedObject;
@@ -143,7 +137,6 @@ namespace Billogram
             try
             {
                 var response = await m_client.PostAsync(url, dataContent);
-                response.EnsureSuccessStatusCode();
                 string responseBody = await response.Content.ReadAsStringAsync();
                 var deserializedObject = JsonConvert.DeserializeObject<Structures.Invoice.Unique>(responseBody);
                 return deserializedObject;
@@ -161,7 +154,6 @@ namespace Billogram
             try
             {
                 var response = await m_client.PostAsync(url, dataContent);
-                response.EnsureSuccessStatusCode();
                 string responseBody = await response.Content.ReadAsStringAsync();
                 var deserializedObject = JsonConvert.DeserializeObject<Structures.Invoice.Unique>(responseBody);
                 return deserializedObject;
@@ -225,7 +217,6 @@ namespace Billogram
             try
             {
                 var response = await m_client.PostAsync(url, dataContent);
-                response.EnsureSuccessStatusCode();
                 string responseBody = await response.Content.ReadAsStringAsync();
                 var deserializedObject = JsonConvert.DeserializeObject<Structures.Invoice.Unique>(responseBody);
                 return deserializedObject;
@@ -243,7 +234,6 @@ namespace Billogram
             try
             {
                 var response = await m_client.PostAsync(url, dataContent);
-                response.EnsureSuccessStatusCode();
                 string responseBody = await response.Content.ReadAsStringAsync();
                 var deserializedObject = JsonConvert.DeserializeObject<Structures.Invoice.Unique>(responseBody);
                 return deserializedObject;
@@ -279,7 +269,6 @@ namespace Billogram
             try
             {
                 var response = await m_client.PostAsync(url, dataContent);
-                response.EnsureSuccessStatusCode();
                 string responseBody = await response.Content.ReadAsStringAsync();
                 var deserializedObject = JsonConvert.DeserializeObject<Structures.Invoice.Unique>(responseBody);
                 return deserializedObject;
@@ -297,7 +286,6 @@ namespace Billogram
             try
             {
                 var response = await m_client.PostAsync(url, dataContent);
-                response.EnsureSuccessStatusCode();
                 string responseBody = await response.Content.ReadAsStringAsync();
                 var deserializedObject = JsonConvert.DeserializeObject<Structures.Invoice.Unique>(responseBody);
                 return deserializedObject;
@@ -315,7 +303,6 @@ namespace Billogram
             try
             {
                 var response = await m_client.PostAsync(url, dataContent);
-                response.EnsureSuccessStatusCode();
                 string responseBody = await response.Content.ReadAsStringAsync();
                 var deserializedObject = JsonConvert.DeserializeObject<Structures.Invoice.Unique>(responseBody);
                 return deserializedObject;
@@ -333,7 +320,6 @@ namespace Billogram
             try
             {
                 var response = await m_client.PostAsync(url, dataContent);
-                response.EnsureSuccessStatusCode();
                 string responseBody = await response.Content.ReadAsStringAsync();
                 var deserializedObject = JsonConvert.DeserializeObject<Structures.Invoice.Unique>(responseBody);
                 return deserializedObject;
@@ -351,7 +337,6 @@ namespace Billogram
             try
             {
                 var response = await m_client.PostAsync(url, dataContent);
-                response.EnsureSuccessStatusCode();
                 string responseBody = await response.Content.ReadAsStringAsync();
                 var deserializedObject = JsonConvert.DeserializeObject<Structures.Invoice.Unique>(responseBody);
                 return deserializedObject;

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Billogram
 {
-    public sealed partial class BillogramClient
+    public sealed partial class APIClient
     {
         public async Task<StatusObject> TestConnection()
         {

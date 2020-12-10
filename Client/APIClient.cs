@@ -8,13 +8,13 @@ using Newtonsoft.Json;
 using Billogram.Handle;
 namespace Billogram
 {
-    public sealed partial class BillogramClient 
+    public sealed partial class APIClient 
     {
         private readonly HttpClient m_client;
         private string m_APISecret;
         private string m_APIUserName;
         private string m_APIBaseURL;
-        public BillogramClient(string API_BaseUrl, string API_UserName, string API_Secret)
+        public APIClient(string API_BaseUrl, string API_UserName, string API_Secret)
         {
             m_client = new HttpClient();
             m_APIBaseURL = API_BaseUrl;
@@ -28,7 +28,7 @@ namespace Billogram
             m_client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(byteArray));
             m_client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         }
-        public BillogramClient(string API_UserName, string API_Secret, bool isSandbox)
+        public APIClient(string API_UserName, string API_Secret, bool isSandbox)
         {
             m_client = new HttpClient();
 
@@ -40,7 +40,7 @@ namespace Billogram
             m_client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(byteArray));
             m_client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         }
-        public BillogramClient(string API_BaseURL, BillogramCredentials credentials)
+        public APIClient(string API_BaseURL, APICredentials credentials)
         {
             m_client = new HttpClient();
 
@@ -55,7 +55,7 @@ namespace Billogram
             m_client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(byteArray));
             m_client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         }
-        public BillogramClient(BillogramCredentials credentials, bool isSandbox)
+        public APIClient(APICredentials credentials, bool isSandbox)
         {
             m_client = new HttpClient();
 
@@ -78,7 +78,7 @@ namespace Billogram
             m_client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(byteArray));
             m_client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         }
-        public void UpdateCredentials(string baseURL, BillogramCredentials credentials)
+        public void UpdateCredentials(string baseURL, APICredentials credentials)
         {
             m_APIBaseURL = baseURL;
             m_APIUserName = credentials.API_UserName;

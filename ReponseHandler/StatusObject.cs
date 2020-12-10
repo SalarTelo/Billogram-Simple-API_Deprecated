@@ -9,14 +9,15 @@ namespace Billogram.Handle
         {
             return handle == null ? null : new StatusObject(handle);
         }
-        public static implicit operator ResponseCode(StatusObject returnHandle) 
+        public static implicit operator ResponseCode(StatusObject status) 
         {
-            return returnHandle.m_response;
+            return status.m_response;
         }
-        public static implicit operator bool(StatusObject returnHandle)
+        public static implicit operator bool(StatusObject status)
         {
-            return returnHandle.m_response == ResponseCode.OK;
+            return status.m_response == ResponseCode.OK;
         }
+        
         public StatusObject(string status)
         {
             if (!Enum.TryParse<ResponseCode>(status, out m_response))
