@@ -3,6 +3,10 @@
 
     public class Unique : IStructureUnique
     {
+        public Unique(int x)
+        {
+
+        }
         public Data data { get; set; }
         public string status { get; set; }
 

@@ -278,6 +278,7 @@ namespace Billogram
                 return null;
             }
         }
+
         /// <summary>
         /// Update an Image object of type T from server, which doesn't require an ID. 
         /// </summary>
